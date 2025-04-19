@@ -3,8 +3,6 @@ export function evaluateExpression(input) {
     const ast = parseExpression(tokens);
     return evaluate(ast);
   }
-  
-  // Step 1: Tokenize input into numbers and operators
   function tokenize(str) {
     const tokens = [];
     let i = 0;
@@ -27,7 +25,6 @@ export function evaluateExpression(input) {
       }
   
       if (/[+\-*/()]/.test(char)) {
-        // Handle negative numbers
         if (
           char === '-' &&
           (tokens.length === 0 ||
@@ -52,8 +49,6 @@ export function evaluateExpression(input) {
   
     return tokens;
   }
-  
-  // Step 2: Parse tokens into an AST (with parentheses support)
   function parseExpression(tokens) {
     let current = 0;
   
@@ -110,8 +105,6 @@ export function evaluateExpression(input) {
   
     return parseAddSub();
   }
-  
-  // Step 3: Evaluate the AST
   function evaluate(node) {
     if (node.type === 'NumberLiteral') return node.value;
   
